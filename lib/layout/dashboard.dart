@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thrift_store/layout/addbarang.dart';
 import '../bloc/login_bloc.dart';
+import 'listbarangstate.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final String sessionToken;
@@ -34,6 +35,16 @@ class WelcomeScreen extends StatelessWidget {
                 );
               },
               child: Text('Tambah Barang'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Navigasi ke halaman Add News
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ListBarangState()),
+                );
+              },
+              child: Text('Lihat Data'),
             ),
           ],
         ),

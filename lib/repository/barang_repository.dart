@@ -39,4 +39,27 @@ class BarangRepository {
       throw Exception('Error: $error');
     }
   }
+
+  Future getlistBarang (String keyword) async{
+    FormData formData = FormData.fromMap({
+        'key': keyword,
+      });
+      try{
+      log("AMBIL LIST");
+      var response = await _dio.post('https://thriftstore1.000webhostapp.com/list_barang.php', data: formData);
+      log("list $response");
+
+      if (response.statusCode == 200) {
+        List newList = response.data;
+        return newList;
+      } else {
+        log("Error" + response.statusCode.toString());
+      return[];
+      }
+
+    }catch(error){
+      log("Error $error");
+      return[];
+    }
+  }
 }
