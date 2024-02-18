@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:thrift_store/repository/login_repository.dart';
 import 'package:thrift_store/bloc/login_bloc.dart';
 import 'package:thrift_store/layout/homepage.dart';
+import 'bloc/listbarang_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +34,10 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
                 create: (context) => AddbarangBloc(
-                    barangRepository: context.read<BarangRepository>()))
+                    barangRepository: context.read<BarangRepository>())),
+              BlocProvider(
+                create: (context) => ListbarangBloc(
+                    barangRepository: context.read<BarangRepository>())..add(TampilList()))
           ],
           child: MaterialApp(
             title: "Home",
